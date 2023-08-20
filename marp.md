@@ -4,7 +4,7 @@ theme: default
 paginate: true
 backgroundImage: #FFCE00
 header: " "
-footer: ©2023 株式会社Utill 髙橋俊介
+footer: ©2023 株式会社ユーティル 髙橋俊介
 style: |
     header {
         background-image: url("images/logo.svg");
@@ -14,7 +14,7 @@ style: |
     }
     footer {
         text-align:right;
-        right:2rem
+        right:3rem
     }
     .mermaid{
         width:100%;
@@ -52,18 +52,23 @@ style: |
 
 </style>
 
+# そもそもLTに<br>ついて<br>どういう認識？
 
-### 題材と資料に関して<br>調べる人が多い
-### LTを始めてやる人が<br>調べていそうな<br>ワードたち
-![bg 90% right:65%](images/image1.png)
+- 題材と資料に関して<br>
+- LTを始めてやる人が<br>気になりそうな点
+
+などを調べる人が多い
+![bg 90% right:62%](images/image1.png)
 
 ---
 # そもそもLTについてどういう認識？
-## 題材系
-### →人によるので一律に解決策が出しづらいこと
+## 大別すると以下の要素に集約される。
+### 題材系
+#### →人によるので一律に解決策が出しづらいこと。
+<hr>
 
-## 資料系
-### →ある程度、技術的に解決出来ること
+### 資料系
+#### →ある程度、技術的に解決出来ること。
 ![opacity:0.03 bg 70%  grayscale](images/logo.svg)
 
 
@@ -100,24 +105,34 @@ style: |
 ---
 # MarpでLT資料を作ろう
 ![opacity:0.03 bg 70%  grayscale](images/logo.svg)
-## 用意するもの
-- Visual Studio Code (必須)
-- Marp for VS Code (必須)
-- Markdown Preview Mermaid（任意）
+## Marpとは？
+### Markdown Presentation Ecosystem
+https://marp.app/
+- Markdownでプレゼンテーション資料を簡単に作成できるツール。
+
+- VScodeの拡張機能として「Marp for VS Code」があるため今回はこちらを使用。
 
 ---
 # MarpでLT資料を作ろう
 ![opacity:0.03 bg 70%  grayscale](images/logo.svg)
-## 基本的にMD記法なら何でも書ける
+## 用意するもの
+- Visual Studio Code (必須)
+- Marp for VS Code (必須)
+- Markdown Preview Mermaid（任意）
+- GitHub アカウント（任意）
+---
+
 <style scoped>
-  table { table-layout: fixed; width: 100%; display:table; font-size: 24px; }
+    .mermaid{
+        padding-left:2rem;
+    }
+    footer{display:none}
 </style>
-【表サンプル】
-| 額(円) | 平均(個)| 最大値(個) | 最小値(個) |
-| --- | --- | --- | --- |
-| 10,000 | 12.949 | 179 | 5 | 
-| 5,000  | 6.814 | 180 | 5 |
-| 1,000  | 8.589 | 181 | 5 |
+
+# MarpでLT資料を作ろう
+## 効率的に使うための準備
+![bg 90% right:50%](images/image4.png)
+VSCodeの設定で`markdown.marp.enableHtml`で検索して、checkを入れておくことでHTMLを認識できるようにしておく。
 
 ---
 
@@ -129,9 +144,25 @@ style: |
 </style>
 
 # MarpでLT資料を作ろう
-## Mermaidも使える
-![bg 90% right:50%](images/image4.png)
-※事前にVSCodeの設定で`markdown.marp.enableHtml`で検索して、checkを入れておきましょう。
+## 今回触れること
+![opacity:0.03 bg 70%  grayscale](images/logo.svg)
+- Marpで出来ることの概要
+## 今回触れないこと
+- MarkDownやMarp、Mermaidの記法について
+- Marpのテーマファイル作成などの踏み込んだ部分
+
+---
+# MarpでLT資料を作ろう
+![opacity:0.03 bg 70%  grayscale](images/logo.svg)
+## 基本的にMD記法なら何でも書ける
+<style scoped>
+  table { table-layout: fixed; width: 100%; display:table; font-size: 24px; }
+</style>
+【表サンプル】
+| ID | name | created_at |
+| --- | --- | --- |
+| 1 | hogehoge | 2023-09-01 00:00:00 |
+| 2  | fugafuga | 2023-09-01 19:00:00 |
 
 ---
 
@@ -161,6 +192,7 @@ sequenceDiagram
 ## 特定のページだけスタイル変更したい
 ![opacity:0.03 bg 70%  grayscale](images/logo.svg)
 
+表示を変えたいページに
 ```
 <style scoped>
     要素{
@@ -168,7 +200,7 @@ sequenceDiagram
     }
 </style>
 ```
-でscopedでCSSも割り当てられる。
+を挿入することでscopedとしてCSSも割り当てられる。
 
 
 ---
@@ -179,8 +211,8 @@ sequenceDiagram
 </style>
 
 # MarpでLT資料を作ろう
-## Marpを出力①
-単純にPDFとして出力するだけであればVSCode上で出力可能
+## Marpを出力
+単純に出力するだけであればVSCode上で出力可能。
 ![bg 95% right:50%](images/image2.png)
 
 ---
@@ -191,20 +223,29 @@ sequenceDiagram
 </style>
 
 # MarpでLT資料を作ろう
-## Marpを出力②
-GitHub Actionで[@marp-team/marp-cli](https://github.com/marp-team/marp-cli) を使ってHTML/CSSやPDF、PowerPoint ドキュメントとして出力
+## Marpを出力
+![opacity:0.03 bg 70%  grayscale](images/logo.svg)
+VSCodeの設定で`markdown.marp.exportType`を開けば
+- HTML/CSS
+- PDF
+- PowerPoint ドキュメント
+
+と出力形式を選択することも可能。
 
 ---
 
 # MarpでLT資料を作ろう
 ## 公開まで自動化したい
+![opacity:0.03 bg 70%  grayscale](images/logo.svg)
 
+[@marp-team/marp-cli](https://github.com/marp-team/marp-cli)とGitHub Actionを使って、mainブランチにMergeすることで
+スライドとして公開することも可能。
 
 ---
 ![opacity:0.03 bg 70%  grayscale](images/logo.svg)
 # まとめ
-- LTはMarpを使って資料作成に時間を掛け過ぎない
-    - 使うことで1ページのボリュームを盛り過ぎずに済む
+- LTはMarpを使って資料作成に時間を掛け過ぎない。
+    - 使うことで1ページのボリュームを盛り過ぎずに済む。
 - 社内でLT会をやる時などMarpで
     - GitHubなどで管理しておくと楽
     - テーマ用CSSを作って使いまわせるようにしておくことで更に効率化
